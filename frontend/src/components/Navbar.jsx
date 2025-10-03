@@ -37,9 +37,11 @@ const Navbar = () => {
         <button className="bg-[#e50914] cursor-pointer px-5 py-2 rounded-full hover:bg-red-700">
           Get AI Movie Picks
         </button>
-        <button className="bg-[#333333] cursor-pointer px-5 py-2 rounded-full hover:bg-gray-600">
-          Sign In
-        </button>
+        <Link to={"/signin"}>
+          <button className="bg-[#333333] cursor-pointer px-5 py-2 rounded-full hover:bg-gray-600">
+            Sign In
+          </button>
+        </Link>
       </div>
     </nav>
   );
