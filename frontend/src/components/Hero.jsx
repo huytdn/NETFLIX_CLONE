@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HeroBg from "../assets/images/herobg2.jpg";
 import icons from "../assets/icons/icon";
+import { Link } from "react-router-dom";
 
 const { IoBookmarkOutline, IoPlayOutline } = icons;
 const Hero = () => {
@@ -46,10 +47,12 @@ const Hero = () => {
           <IoBookmarkOutline className="h-6 w-6  mr-2 md:h-5 md:w-5" />
           Save for Later
         </button>
-        <button className="flex justify-center items-center bg-[#e50914] hover:bg-red-700 text-white py-3 px-4 rounded-full cursor-pointer text-sm md:text-base">
-          <IoPlayOutline className="h-6 w-6 mr-2 md:h-5 md:w-5" />
-          Watch Now
-        </button>
+        <Link to={`/movie/${movie.id}`}>
+          <button className="flex justify-center items-center bg-[#e50914] hover:bg-red-700 text-white py-3 px-4 rounded-full cursor-pointer text-sm md:text-base">
+            <IoPlayOutline className="h-6 w-6 mr-2 md:h-5 md:w-5" />
+            Watch Now
+          </button>
+        </Link>
       </div>
     </div>
   );

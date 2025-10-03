@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CardImg from "../assets/images/cardimg.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { Link } from "react-router-dom";
 
 const CardList = ({ title, category }) => {
   const [data, setData] = useState([]);
@@ -32,12 +33,14 @@ const CardList = ({ title, category }) => {
       <Swiper slidesPerView={"auto"} className="mySwiper">
         {data.map((item, index) => (
           <SwiperSlide key={index} className="max-w-72">
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
-              alt=""
-              className="h-44 w-full object-center object-cover"
-            />
-            <p className="text-center pt-2">{item.original_title}</p>
+            <Link to={`/movie/${item.id}`}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
+                alt=""
+                className="h-44 w-full object-center object-cover"
+              />
+              <p className="text-center pt-2">{item.original_title}</p>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

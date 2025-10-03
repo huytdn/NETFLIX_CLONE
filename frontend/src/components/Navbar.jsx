@@ -1,16 +1,19 @@
 import React from "react";
 import icons from "../assets/icons/icon";
 import logo from "../assets/images/logo.png";
+import { Link } from "react-router-dom";
 
 const { IoSearchOutline } = icons;
 const Navbar = () => {
   return (
     <nav className="bg-black text-gray-200 flex justify-between items-center p-4 h-20 text-sm md:text-[15px] font-semibold text-nowrap">
-      <img
-        src={logo}
-        alt="logo"
-        className="w-32 brightness-125 cursor-pointer"
-      />
+      <Link to={"/"}>
+        <img
+          src={logo}
+          alt="logo"
+          className="w-32 brightness-125 cursor-pointer"
+        />
+      </Link>
 
       <ul className="hidden xl:flex space-x-10 text-[18px]">
         <li className="cursor-pointer hover:text-[#e50914]">Home</li>
