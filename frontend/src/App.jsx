@@ -5,10 +5,12 @@ import MoviePage from "./pages/MoviePage";
 import { Routes, Route } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
     <>
+      <Toaster />
       <Navbar />
 
       <Routes>
