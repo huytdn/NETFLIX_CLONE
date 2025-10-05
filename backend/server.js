@@ -1,5 +1,6 @@
 import express from "express";
 import { connectToDB } from "./config/db.js";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 import User from "./models/user.model.js";
 import bcryptjs from "bcryptjs";
@@ -8,6 +9,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 dotenv.config();
 
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const app = express();
 
 app.use(express.json());
@@ -139,6 +141,18 @@ app.get("/api/fetch-user", async (req, res) => {
 app.post("/api/logout", async (req, res) => {
   res.clearCookie("token");
   res.status(200).json({ message: "Logged out successfully." });
+});
+
+app.post("/api/ai-recommendations", async (req, res) => {
+  const { prompt } = req.body;
+  try {
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+    const result = await model.generateContent(prompt);
+    res.json({ text: result.response.text() });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to generate AI recommendation" });
+  }
 });
 
 app.listen(PORT, () => {

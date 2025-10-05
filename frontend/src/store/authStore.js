@@ -2,6 +2,7 @@ import { create } from "zustand";
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
+
 const API_URL = "http://localhost:5050/api";
 
 export const useAuthStore = create((set) => ({
@@ -12,7 +13,8 @@ export const useAuthStore = create((set) => ({
   message: null,
   fetchingUser: true,
 
-  //   functions
+  // functions
+
   signup: async (username, email, password) => {
     set({ isLoading: true, message: null });
 
@@ -27,7 +29,7 @@ export const useAuthStore = create((set) => ({
     } catch (error) {
       set({
         isLoading: false,
-        error: error.response.data.message || "Error signing up",
+        error: error.response.data.message || "Error Signing up",
       });
 
       throw error;
@@ -45,7 +47,11 @@ export const useAuthStore = create((set) => ({
 
       const { user, message } = response.data;
 
-      set({ user, message, isLoading: false });
+      set({
+        user,
+        message,
+        isLoading: false,
+      });
 
       return { user, message };
     } catch (error) {
@@ -66,8 +72,9 @@ export const useAuthStore = create((set) => ({
       set({ user: response.data.user, fetchingUser: false });
     } catch (error) {
       set({
-        isLoading: false,
-        error: error.response.data.message || "Error fetching user",
+        fetchingUser: false,
+        error: null,
+        user: null,
       });
 
       throw error;
@@ -86,9 +93,13 @@ export const useAuthStore = create((set) => ({
         user: null,
         error: null,
       });
+
       return { message };
     } catch (error) {
-      set({ fetchingUser: false, error: null, user: null });
+      set({
+        isLoading: false,
+        error: error.response.data.message || "Error logging out",
+      });
 
       throw error;
     }
