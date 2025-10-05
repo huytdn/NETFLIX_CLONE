@@ -4,11 +4,13 @@ import dotenv from "dotenv";
 import User from "./models/user.model.js";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
+import cookieParser from "cookie-parser";
 dotenv.config();
 
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 
 const PORT = process.env.PORT || 5000;
 
@@ -105,6 +107,32 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
+app.get("/api/fetch-user", async (req, res) => {
+  const { token } = req.cookies;
+
+  if (!token) {
+    return res.status(401).json({ message: "No token provided." });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    if (!decoded) {
+      return res.status(401).json({ message: "Invalid token" });
+    }
+
+    const userDoc = await User.findById(decoded.id).select("-password");
+
+    if (!userDoc) {
+      return res.status(400).json({ message: "No user found." });
+    }
+
+    res.status(200).json({ user: userDoc });
+  } catch (error) {
+    console.log("Error in fetching user: ", error.message);
+    return res.status(400).json({ message: error.message });
+  }
+});
 app.listen(PORT, () => {
   connectToDB();
   console.log(`Server is running on port: ${PORT}`);
