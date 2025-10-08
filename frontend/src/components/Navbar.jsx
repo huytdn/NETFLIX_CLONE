@@ -39,13 +39,24 @@ https://api.dicebear.com/9.x/pixel-art/svg?seed=${encodeURIComponent(
       </Link>
 
       <ul className="hidden xl:flex space-x-10 text-[18px]">
-        <li className="cursor-pointer hover:text-[#e50914]">Home</li>
-        <li className="cursor-pointer hover:text-[#e50914]">Tv Shows</li>
-        <li className="cursor-pointer hover:text-[#e50914]">Movies</li>
-        <li className="cursor-pointer hover:text-[#e50914]">Anime</li>
-        <li className="cursor-pointer hover:text-[#e50914]">Games</li>
-        <li className="cursor-pointer hover:text-[#e50914]">New & Popular</li>
-        <li className="cursor-pointer hover:text-[#e50914]">Upcoming</li>
+        <Link to={"/"} className="cursor-pointer hover:text-[#e50914]">
+          Home
+        </Link>
+        <Link to={"/tvshows"} className="cursor-pointer hover:text-[#e50914]">
+          Tv Shows
+        </Link>
+        <Link to={"/movies"} className="cursor-pointer hover:text-[#e50914]">
+          Movies
+        </Link>
+        <Link to={"/anime"} className="cursor-pointer hover:text-[#e50914]">
+          Anime
+        </Link>
+        <Link to={"/games"} className="cursor-pointer hover:text-[#e50914]">
+          Games
+        </Link>
+        <Link to={"upcoming"} className="cursor-pointer hover:text-[#e50914]">
+          Upcoming
+        </Link>
       </ul>
 
       <div className="flex items-center space-x-4 relative">
