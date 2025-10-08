@@ -48,7 +48,7 @@ const CardList = ({ title, category }) => {
                 </div>
                 {/* tên */}
                 <div className="p-3 text-center">
-                  <p className="text-sm md:text-base font-medium line-clamp-2">
+                  <p className="text-sm md:text-base font-medium truncate">
                     {item.original_title}
                   </p>
                 </div>

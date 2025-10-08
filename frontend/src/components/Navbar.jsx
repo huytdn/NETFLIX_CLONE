@@ -6,7 +6,6 @@ import { useAuthStore } from "../store/authStore";
 import toast from "react-hot-toast";
 
 const {
-  IoSearchOutline,
   MdOutlineHelpCenter,
   MdOutlineSettings,
   MdOutlineLogout,
@@ -68,16 +67,6 @@ const Navbar = () => {
       </ul>
 
       <div className="flex items-center space-x-4 relative">
-        {/* sêarch */}
-        <div className="relative hidden md:inline-flex">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="bg-[#333333] px-4 py-2 rounded-full min-w-72 pr-10 outline-none"
-          />
-          <IoSearchOutline className="absolute right-3 w-6 h-6 top-1.5" />
-        </div>
-
         {/* aisearch */}
         <Link to={user ? "ai-recommendations" : "signin"}>
           <button className="bg-[#e50914] cursor-pointer px-5 py-2 rounded-full hover:bg-red-700">

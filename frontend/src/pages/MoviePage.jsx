@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import icons from "../assets/icons/icon";
+import { Card, CardContent } from "@/components/ui/card";
 
 const { IoIosStar, IoPlayOutline } = icons;
 const MoviePage = () => {
@@ -54,7 +55,7 @@ const MoviePage = () => {
     );
   }
   return (
-    <div className="min-h-screen bg-[#181818] text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-red-900 to-slate-900 text-white">
       <div
         className="relative h-[70vh] flex items-end "
         style={{
@@ -180,23 +181,25 @@ const MoviePage = () => {
           <h2 className="font-semibold text-white">You might also like ...</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
             {recommendations.slice(0, 10).map((rec) => (
-              <div
+              <Card
                 key={rec.id}
-                className="bg-[#232323] rounded-lg overflow-hidden hover:scale-105 transition"
+                className="group overflow-hidden bg-white/5 border-red-400/20 hover:border-red-400/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/20"
               >
-                <Link to={`/movie/${rec.id}`}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/original/${rec.poster_path}`}
-                    className="w-full  object-cover"
-                  />
-                  <div className="p-2">
-                    <h3 className="text-sm font-semibold">{rec.title}</h3>
-                    <span className="text-xs text-gray-400">
-                      {rec.release_date?.slice(0, 4)}
-                    </span>
-                  </div>
-                </Link>
-              </div>
+                <CardContent>
+                  <Link to={`/movie/${rec.id}`}>
+                    <img
+                      src={`https://image.tmdb.org/t/p/original/${rec.poster_path}`}
+                      className="w-full  object-cover"
+                    />
+                    <div className="p-2">
+                      <h3 className="text-sm font-semibold">{rec.title}</h3>
+                      <span className="text-xs text-gray-400">
+                        {rec.release_date?.slice(0, 4)}
+                      </span>
+                    </div>
+                  </Link>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>

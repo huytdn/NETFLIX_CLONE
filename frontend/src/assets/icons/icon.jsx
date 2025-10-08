@@ -11,6 +11,7 @@ import {
   MdOutlineLogout,
 } from "react-icons/md";
 import { IoMdMenu } from "react-icons/io";
+import { FiFilm } from "react-icons/fi";
 
 const icons = {
   IoSearchOutline,
@@ -22,6 +23,7 @@ const icons = {
   MdOutlineLogout,
   IoMdMenu,
   IoCloseCircleOutline,
+  FiFilm,
 };
 
 export default icons;
