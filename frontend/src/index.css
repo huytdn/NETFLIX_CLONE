@@ -8,3 +8,20 @@
 body {
   background-color: #181818;
 }
+
+@layer utilities {
+  @keyframes slide-down {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-down {
+    animation: slide-down 0.4s ease-out forwards;
+  }
+}
