@@ -8,12 +8,13 @@ import SignUp from "./pages/SignUp";
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/authStore";
 import AIRecommendations from "./pages/AIRecommendations";
-import ActorPage from "./pages/ActorPage";
+import ActorSearchPage from "./pages/ActorSearchPage";
 import SearchmoviesPage from "./pages/SearchmoviesPage";
 import AnimePage from "./pages/AnimePage";
 import UpcomingPage from "./pages/UpcomingPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import WatchlistPage from "./pages/WatchlistPage";
+import ActorPage from "./pages/ActorPage";
 
 const App = () => {
   const { fetchUser, fetchingUser } = useAuthStore();
@@ -32,11 +33,12 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/actor" element={<ActorPage />} />
+        <Route path="/actor" element={<ActorSearchPage />} />
         <Route path="/searchmovies" element={<SearchmoviesPage />} />
         <Route path="/anime" element={<AnimePage />} />
         <Route path="/upcoming" element={<UpcomingPage />} />
         <Route path="/movie/:id" element={<MoviePage />} />
+        <Route path="/actors/:id" element={<ActorPage />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/ai-recommendations" element={<AIRecommendations />} />

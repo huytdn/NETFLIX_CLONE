@@ -26,7 +26,7 @@ const CardList = ({ title, category }) => {
   }, [category]);
 
   return (
-    <div className="text-white md:px-6">
+    <div className="text-white md:px-6 mb-10">
       {/* title */}
       <h2 className="pt-10 pb-5 text-2xl font-semibold tracking-wide">
         {title}

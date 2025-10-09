@@ -12,6 +12,8 @@ import {
 } from "react-icons/md";
 import { IoMdMenu } from "react-icons/io";
 import { FiFilm } from "react-icons/fi";
+import { FaRegUserCircle, FaRegCalendarAlt, FaAward } from "react-icons/fa";
+import { LuMapPin } from "react-icons/lu";
 
 const icons = {
   IoSearchOutline,
@@ -24,6 +26,10 @@ const icons = {
   IoMdMenu,
   IoCloseCircleOutline,
   FiFilm,
+  FaRegUserCircle,
+  FaRegCalendarAlt,
+  FaAward,
+  LuMapPin,
 };
 
 export default icons;
