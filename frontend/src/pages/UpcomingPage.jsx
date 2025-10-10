@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import icons from "../assets/icons/icon";
 import { Link } from "react-router-dom";
+import GlobalApi from "../services/GlobalApi";
 
 const { FaRegCalendarAlt, FiFilm, IoIosStar } = icons;
 
@@ -13,22 +14,16 @@ const UpcomingMovie = () => {
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
   useEffect(() => {
-    const fetchUpcomingMovies = async () => {
-      try {
-        setIsLoading(true);
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1&api_key=${API_KEY}`
-        );
-        const data = await response.json();
-        setUpcomingMovies(data.results || []);
-      } catch (error) {
-        console.error("Error fetching upcoming movies:", error);
-      } finally {
-        setIsLoading(false);
-      }
+    const fetchData = async () => {
+      setIsLoading(true);
+
+      const data = await GlobalApi.fetchUpcomingMovie();
+      setUpcomingMovies(data || []);
+
+      setIsLoading(false);
     };
 
-    fetchUpcomingMovies();
+    fetchData();
   }, []);
 
   const formatDate = (dateString) => {

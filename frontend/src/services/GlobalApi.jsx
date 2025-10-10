@@ -26,6 +26,19 @@ const GlobalApi = {
     }
   },
 
+  fetchUpcomingMovie: async () => {
+    try {
+      const res = await fetch(
+        `${BASE_URL}/movie/upcoming?language=en-US&page=1&api_key=${API_KEY}`
+      );
+      const data = await res.json();
+      return data.results || [];
+    } catch (err) {
+      console.error("Error fetching movie upcoming:", err);
+      return [];
+    }
+  },
+
   getPersonDetails: async (id) => {
     try {
       const [personRes, creditsRes] = await Promise.all([

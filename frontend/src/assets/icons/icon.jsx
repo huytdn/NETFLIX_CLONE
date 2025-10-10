@@ -3,6 +3,7 @@ import {
   IoBookmarkOutline,
   IoPlayOutline,
   IoCloseCircleOutline,
+  IoBookOutline,
 } from "react-icons/io5";
 import { IoIosStar } from "react-icons/io";
 import {
@@ -14,6 +15,7 @@ import { IoMdMenu } from "react-icons/io";
 import { FiFilm } from "react-icons/fi";
 import { FaRegUserCircle, FaRegCalendarAlt, FaAward } from "react-icons/fa";
 import { LuMapPin } from "react-icons/lu";
+import { CiYoutube } from "react-icons/ci";
 
 const icons = {
   IoSearchOutline,
@@ -30,6 +32,8 @@ const icons = {
   FaRegCalendarAlt,
   FaAward,
   LuMapPin,
+  IoBookOutline,
+  CiYoutube,
 };
 
 export default icons;

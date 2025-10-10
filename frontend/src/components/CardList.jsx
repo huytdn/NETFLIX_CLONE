@@ -38,7 +38,7 @@ const CardList = ({ title, category }) => {
           <SwiperSlide key={index} className="!w-64">
             <Link to={`/movie/${item.id}`}>
               <div className="bg-zinc-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                {/* ảnh */}
+                {/* image */}
                 <div className="relative">
                   <img
                     src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
@@ -46,7 +46,7 @@ const CardList = ({ title, category }) => {
                     className="h-40 w-full object-cover rounded-t-2xl transform hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                {/* tên */}
+                {/* name */}
                 <div className="p-3 text-center">
                   <p className="text-sm md:text-base font-medium truncate">
                     {item.original_title}

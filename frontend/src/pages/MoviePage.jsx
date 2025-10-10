@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import icons from "../assets/icons/icon";
 import { Card, CardContent } from "@/components/ui/card";
 
-const { IoIosStar, IoPlayOutline } = icons;
+const { IoIosStar, IoPlayOutline, IoBookmarkOutline, CiYoutube } = icons;
 const MoviePage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
@@ -91,15 +91,29 @@ const MoviePage = () => {
               ))}
             </div>
             <p className="max-w-2xl text-gray-200">{movie.overview}</p>
-            <Link
-              to={`https://www.youtube.com/watch?v=${trailerKey}`}
-              target="_blank"
-            >
-              <button className="flex justify-center items-center bg-[#e50914] hover:bg-red-700 text-white py-3 px-4 rounded-full cursor-pointer text-sm md:text-base mt-2 md:mt-4">
-                <IoPlayOutline className="h-6 w-6 mr-2 md:h-5 md:w-5" />
-                Watch Now
-              </button>
-            </Link>
+            <div className="flex gap-2">
+              <Link>
+                <button className="flex justify-center items-center bg-white hover:bg-gray-200 text-black py-3 px-4 rounded-full cursor-pointer text-sm md:text-base mt-2 md:mt-4">
+                  <IoBookmarkOutline className="h-6 w-6 mr-2 md:h-5 md:w-5" />
+                  Save for Later
+                </button>
+              </Link>
+              <Link>
+                <button className="flex justify-center items-center bg-[#e50914] hover:bg-red-700 text-white py-3 px-4 rounded-full cursor-pointer text-sm md:text-base mt-2 md:mt-4">
+                  <IoPlayOutline className="h-6 w-6 mr-2 md:h-5 md:w-5" />
+                  Watch Now
+                </button>
+              </Link>
+              <Link
+                to={`https://www.youtube.com/watch?v=${trailerKey}`}
+                target="_blank"
+              >
+                <button className="flex justify-center items-center bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-full cursor-pointer text-sm md:text-base mt-2 md:mt-4">
+                  <IoPlayOutline className="h-6 w-6 mr-2 md:h-5 md:w-5" />
+                  Trailer Now
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
