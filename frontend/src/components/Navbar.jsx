@@ -55,9 +55,6 @@ const Navbar = () => {
         >
           Search Movies
         </Link>
-        <Link to={"/anime"} className="cursor-pointer hover:text-[#e50914]">
-          Anime
-        </Link>
         <Link to={"/watchList"} className="cursor-pointer hover:text-[#e50914]">
           WatchList
         </Link>
@@ -76,11 +73,18 @@ const Navbar = () => {
 
         {/* login */}
         {!user ? (
-          <Link to={"/signin"}>
-            <button className="bg-[#333333] cursor-pointer px-5 py-2 rounded-full hover:bg-gray-600 hidden md:block">
-              Sign In
-            </button>
-          </Link>
+          <div className="flex gap-2">
+            <Link to={"/signin"}>
+              <button className="bg-[#333333] cursor-pointer px-5 py-2 rounded-full hover:bg-gray-600 hidden md:block">
+                Sign In
+              </button>
+            </Link>
+            <Link to={"/signup"}>
+              <button className="bg-[#333333] cursor-pointer px-5 py-2 rounded-full hover:bg-gray-600 hidden md:block">
+                Sign Up
+              </button>
+            </Link>
+          </div>
         ) : (
           <div className="text-white hidden md:block">
             <img

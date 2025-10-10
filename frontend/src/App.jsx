@@ -10,7 +10,6 @@ import { useAuthStore } from "./store/authStore";
 import AIRecommendations from "./pages/AIRecommendations";
 import ActorSearchPage from "./pages/ActorSearchPage";
 import SearchmoviesPage from "./pages/SearchmoviesPage";
-import AnimePage from "./pages/AnimePage";
 import UpcomingPage from "./pages/UpcomingPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import WatchlistPage from "./pages/WatchlistPage";
@@ -35,7 +34,6 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/actor" element={<ActorSearchPage />} />
         <Route path="/searchmovies" element={<SearchmoviesPage />} />
-        <Route path="/anime" element={<AnimePage />} />
         <Route path="/upcoming" element={<UpcomingPage />} />
         <Route path="/movie/:id" element={<MoviePage />} />
         <Route path="/actors/:id" element={<ActorPage />} />
