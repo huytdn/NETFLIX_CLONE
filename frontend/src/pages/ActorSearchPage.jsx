@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import icons from "../assets/icons/icon";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/UI/card";
 import { Link } from "react-router-dom";
 import GlobalApi from "../services/GlobalApi";
 

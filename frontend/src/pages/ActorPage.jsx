@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import icons from "../assets/icons/icon";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/UI/card";
 import GlobalApi from "../services/GlobalApi";
 
 const { FiFilm, IoIosStar, FaRegCalendarAlt, FaAward, LuMapPin } = icons;

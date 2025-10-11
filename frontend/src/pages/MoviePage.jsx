@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import icons from "../assets/icons/icon";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/UI/card";
 import { saveMovie, getSavedMovies } from "../services/movieServices";
 import toast from "react-hot-toast";
 
