@@ -5,6 +5,7 @@ import cors from "cors";
 import { connectToDB } from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import aiRoutes from "./routes/aiRoutes.js";
+import savedMovieRoutes from "./routes/savedMovieRoutes.js";
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.get("/", (req, res) => res.send("NhatHuy"));
 app.use("/api", userRoutes);
 app.use("/api", aiRoutes);
+app.use("/api/movies", savedMovieRoutes);
 
 app.listen(PORT, () => {
   connectToDB();

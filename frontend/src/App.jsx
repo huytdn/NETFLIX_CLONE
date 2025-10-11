@@ -23,7 +23,7 @@ const App = () => {
   }, [fetchUser]);
 
   if (fetchingUser) {
-    return <p className="text-white">Loading...</p>;
+    return <p className="text-white ">Loading...</p>;
   }
   return (
     <>

@@ -2,14 +2,14 @@ import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-// Helper: Tạo JWT token
+// Helper: create JWT token
 const generateToken = (userId) => {
   return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
     expiresIn: "7d",
   });
 };
 
-// Đăng ký
+// register
 export const signup = async (req, res) => {
   const { username, email, password } = req.body;
   try {
@@ -51,7 +51,7 @@ export const signup = async (req, res) => {
   }
 };
 
-// Đăng nhập
+// login
 export const login = async (req, res) => {
   const { username, password } = req.body;
   try {
@@ -79,7 +79,7 @@ export const login = async (req, res) => {
   }
 };
 
-// Lấy user đang đăng nhập
+// get user
 export const fetchUser = async (req, res) => {
   try {
     res.status(200).json({ user: req.user });
@@ -88,7 +88,7 @@ export const fetchUser = async (req, res) => {
   }
 };
 
-// Đăng xuất
+// logout
 export const logout = async (req, res) => {
   res.clearCookie("token");
   res.status(200).json({ message: "Logged out successfully." });

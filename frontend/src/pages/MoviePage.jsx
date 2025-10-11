@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import icons from "../assets/icons/icon";
 import { Card, CardContent } from "@/components/ui/card";
+import { saveMovie, getSavedMovies } from "../services/movieServices";
+import toast from "react-hot-toast";
 
 const { IoIosStar, IoPlayOutline, IoBookmarkOutline, CiYoutube } = icons;
 const MoviePage = () => {
@@ -9,6 +11,31 @@ const MoviePage = () => {
   const [movie, setMovie] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
   const [trailerKey, setTrailerKey] = useState(null);
+  const [isSaved, setIsSaved] = useState(false);
+
+  const IMAGE_BASE_URL2 = import.meta.env.VITE_IMAGE_BASE_URL2;
+
+  useEffect(() => {
+    const checkIfSaved = async () => {
+      const saved = await getSavedMovies();
+      const found = saved?.some((m) => String(m.movieId) === String(id));
+      setIsSaved(found);
+    };
+    checkIfSaved();
+  }, [id]);
+
+  const handleSave = async () => {
+    if (isSaved) {
+      toast.error("This movie is already in your watchlist!");
+      return;
+    }
+
+    const result = await saveMovie(movie);
+    if (result) {
+      toast.success("Save film successfully!");
+      setIsSaved(true);
+    }
+  };
 
   const options = {
     method: "GET",
@@ -59,7 +86,7 @@ const MoviePage = () => {
       <div
         className="relative h-[70vh] flex items-end "
         style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
+          backgroundImage: `url(${IMAGE_BASE_URL2}${movie.backdrop_path})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -67,7 +94,7 @@ const MoviePage = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-[#181818] via-transparent to-transparent"></div>
         <div className="relative z-10 flex items-end p-8 gap-8">
           <img
-            src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+            src={`${IMAGE_BASE_URL2}${movie.poster_path}`}
             className="rounded-lg shadow-lg w-48 hidden md:block"
           />
           <div>
@@ -92,12 +119,14 @@ const MoviePage = () => {
             </div>
             <p className="max-w-2xl text-gray-200">{movie.overview}</p>
             <div className="flex gap-2">
-              <Link>
-                <button className="flex justify-center items-center bg-white hover:bg-gray-200 text-black py-3 px-4 rounded-full cursor-pointer text-sm md:text-base mt-2 md:mt-4">
-                  <IoBookmarkOutline className="h-6 w-6 mr-2 md:h-5 md:w-5" />
-                  Save for Later
-                </button>
-              </Link>
+              <button
+                onClick={handleSave}
+                className="flex justify-center items-center bg-white hover:bg-gray-200 text-black py-3 px-4 rounded-full cursor-pointer text-sm md:text-base mt-2 md:mt-4"
+              >
+                <IoBookmarkOutline className="h-6 w-6 mr-2 md:h-5 md:w-5" />
+                Save for Later
+              </button>
+
               <Link>
                 <button className="flex justify-center items-center bg-[#e50914] hover:bg-red-700 text-white py-3 px-4 rounded-full cursor-pointer text-sm md:text-base mt-2 md:mt-4">
                   <IoPlayOutline className="h-6 w-6 mr-2 md:h-5 md:w-5" />
@@ -132,7 +161,7 @@ const MoviePage = () => {
               </li>
               <li>
                 <span className="font-semibold text-white">
-                  Original Language:{" "}
+                  Original Language:
                 </span>
                 <span className="ml-2">
                   {movie.original_language?.toUpperCase()}
