@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getSavedMovies, removeMovie } from "../services/movieServices";
 import icons from "../assets/icons/icon";
-import { Card, CardContent } from "../components/UI/card";
+import { Card, CardContent } from "@/components/UI/card";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
