@@ -10,8 +10,7 @@ const UpcomingMovie = () => {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const API_KEY = "4e1736d084cfa4eba341a942b791a606";
-  const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
+  const IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 
   useEffect(() => {
     const fetchData = async () => {

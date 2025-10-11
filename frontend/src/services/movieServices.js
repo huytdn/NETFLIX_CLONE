@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_BACKEND_URL;
+
 const api = axios.create({
-  baseURL: "http://localhost:5050/api/movies",
+  baseURL: `${API_URL}/movies`,
 });
 
 api.interceptors.request.use((config) => {
